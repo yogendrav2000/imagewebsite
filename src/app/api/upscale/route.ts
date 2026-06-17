@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
     const result = await AIService.processImage(image, 'upscale', options);
     return NextResponse.json(result);
   } catch (error: any) {
+    console.error("SERVER ERROR IN ROUTE:", error);
     return NextResponse.json({ error: error.message || 'Upscaling failed.' }, { status: 500 });
   }
 }
